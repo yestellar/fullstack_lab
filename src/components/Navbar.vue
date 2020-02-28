@@ -9,7 +9,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="mr-auto">
-          <b-nav-form>
+          <b-nav-form class="pv-2">
             <b-form-input size="sm" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px; width: 400px" placeholder="Search"></b-form-input>
             <b-button size="sm" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" type="submit">Search</b-button>
           </b-nav-form>
@@ -39,7 +39,7 @@
             <b-dropdown-item href="#">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
-        
+
       </b-collapse>
 
     </b-navbar>
