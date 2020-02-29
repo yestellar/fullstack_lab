@@ -2,27 +2,33 @@
   <div class="menu">
     <b-navbar toggleable="lg" type="light" variant="light">
 
-          <template v-if="!isMenuSmall">
+          <b-container fluid>
+            <button type="button" class="menu__button p-1" @click="openHideMenu()">menu <b-icon icon="chevron-down"></b-icon></button>
             <b-nav class="m-auto">
-              <b-nav-item href="#" class="menu__menu-item" disabled>menu:</b-nav-item>
-              <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>TOMMY HILFIGER</b-nav-item>
-              <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>RALPH LAUREN</b-nav-item>
-              <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>LOUIS VUITTON</b-nav-item>
-              <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>HOUSE OF VERSACE</b-nav-item>
+              <div id="cols_container" class="menu__cols-container">
+                <b-row cols="1">
+                  <b-col col md="4" xl="auto">
+                    <b-nav-item href="#" class="menu__menu-item" secondary><b-icon class="mr-2" icon="dot" ></b-icon>ARMANI</b-nav-item>
+                  </b-col>
+                  <b-col col md="4" xl="auto">
+                    <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>TOMMY HILFIGER</b-nav-item>
+                  </b-col>
+                  <b-col col md="4" xl="auto">
+                    <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>RALPH LAUREN</b-nav-item>
+                  </b-col>
+                  <b-col col md="4" xl="auto">
+                    <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>GUCCI</b-nav-item>
+                  </b-col>
+                  <b-col col md="4" xl="auto">
+                    <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>LOUIS VUITTON</b-nav-item>
+                  </b-col>
+                  <b-col col md="4" xl="auto">
+                    <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>HOUSE OF VERSACE</b-nav-item>
+                  </b-col>
+                </b-row>
+              </div>
             </b-nav>
-          </template>
-          <template v-if="isMenuSmall">
-            <b-button variant="light" @click="isMenuSmallOpen = !isMenuSmallOpen" style="width: 100%">menu
-              <b-icon v-if="!isMenuSmallOpen" icon="chevron-compact-down"></b-icon>
-              <b-icon v-if="isMenuSmallOpen" icon="chevron-compact-up"></b-icon>
-            </b-button>
-            <b-nav class="m-auto pt-2" vertical v-if="isMenuSmallOpen">
-              <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>TOMMY HILFIGER</b-nav-item>
-              <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>RALPH LAUREN</b-nav-item>
-              <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>LOUIS VUITTON</b-nav-item>
-              <b-nav-item href="#" class="menu__menu-item"><b-icon class="mr-2" icon="dot"></b-icon>HOUSE OF VERSACE</b-nav-item>
-            </b-nav>
-          </template>
+          </b-container>
 
       </b-collapse>
 
@@ -33,19 +39,10 @@
 <script>
 export default {
   name: 'menu',
-  data() {
-    return {
-      isMenuSmall: false,
-      isMenuSmallOpen: false
+  methods: {
+    openHideMenu() {
+      document.getElementById('cols_container').classList.toggle('active')
     }
-  },
-  mounted() {
-    let menuItems = document.getElementsByClassName('menu__menu-item')
-    let menuWidth = 0
-    menuItems.forEach((item, i) => {
-      menuWidth += item.offsetWidth
-    });
-    if (menuWidth > window.innerWidth) this.isMenuSmall = true
   }
 }
 </script>
@@ -53,4 +50,22 @@ export default {
 <style lang="sass" scoped>
   .menu
     border-top: 1px solid #ddd
+    &__button
+      width: 100%
+      background-color: #f8f9fa
+      &:focus
+        outline: none
+
+    &__cols-container
+      display: none
+      &.active
+        display: block
+
+    @media (min-width: 768px)
+      &__button
+        display: none
+
+      &__cols-container
+        display: block
+
 </style>
