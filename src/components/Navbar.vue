@@ -1,21 +1,21 @@
 <template lang="html">
   <div id="navbar">
-    <b-navbar toggleable="lg" type="light" variant="light">
+    <b-navbar toggleable="lg" type="light" variant="light" class="header">
 
-      <b-navbar-brand href="#" class="ml-1"><b-icon icon="terminal-fill" font-scale="1.2" class="mr-1"></b-icon>{{ projectName }}</b-navbar-brand>
+      <b-navbar-brand href="#" class="ml-1 mr-0 mr-lg-2"><b-icon icon="terminal-fill" font-scale="1.2" class="mr-1"></b-icon>{{ projectName }}</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
-        <b-navbar-nav class="mr-auto">
-          <b-nav-form class="pv-2">
-            <b-form-input size="sm" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px; width: 400px" placeholder="Search"></b-form-input>
-            <b-button size="sm" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" type="submit">Search</b-button>
-          </b-nav-form>
-        </b-navbar-nav>
+          <b-container class="header__form-container p-0" fluid>
+            <b-nav-form class="pt-2 pt-md-0">
+              <b-form-input size="sm" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;" placeholder="Search"></b-form-input>
+              <b-button size="sm" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" type="submit">Search</b-button>
+            </b-nav-form>
+          </b-container>
 
-        <b-navbar-nav class="mr-2">
+        <b-navbar-nav class="ml-auto">
           <!-- Cart dropdown -->
           <b-nav-item-dropdown>
             <template v-slot:button-content>
@@ -58,4 +58,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+
+  *:focus
+    outline: none
+
+  .header
+    &__form-container
+      li, form
+        width: 100%
+      @media (max-width: 576px)
+      form
+        input
+          width: 225px
+
 </style>

@@ -6,7 +6,7 @@
             <button type="button" class="menu__button p-1" @click="openHideMenu()">menu <b-icon icon="chevron-down"></b-icon></button>
             <b-nav class="m-auto">
               <div id="cols_container" class="menu__cols-container">
-                <b-row cols="1">
+                <b-row cols="1" class="pt-1 pt-md-0">
                   <b-col col md="4" xl="auto">
                     <b-nav-item href="#" class="menu__menu-item" secondary><b-icon class="mr-2" icon="dot" ></b-icon>ARMANI</b-nav-item>
                   </b-col>
