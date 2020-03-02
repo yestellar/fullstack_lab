@@ -4,16 +4,16 @@
     <!-- Products list -->
     <b-row cols="2">
       <b-col col md="3" v-for="product in allProducts" :key="product.id">
-        <Product :productId="product.id" @openmodal="openModal($event)"></Product>
+        <ProductCard :productId="product.id" @openmodal="openModal($event)"></ProductCard>
       </b-col>
     </b-row>
     <!-- Modal window -->
-  <Modal :product="product"/>
+  <Modal :product="product" @closemodal="closeModal($event)"/>
   </div>
 </template>
 
 <script>
-import Product from '@/components/Product.vue'
+import ProductCard from '@/components/ProductCard.vue'
 import Modal from '@/components/Modal.vue'
 
 import { mapGetters, mapActions } from 'vuex'
@@ -21,7 +21,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: "FreshCatalog",
   components: {
-    Product,
+    ProductCard,
     Modal
   },
   data() {
@@ -35,6 +35,9 @@ export default {
     openModal(product) {
       this.product = product
       this.$bvModal.show('product_modal')
+    },
+    closeModal(event) {
+      this.$bvModal.hide('product_modal')
     }
   },
   mounted() {

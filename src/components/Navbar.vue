@@ -4,7 +4,7 @@
 
       <b-container>
 
-        <b-navbar-brand href="#" class="ml-1 mr-0 mr-lg-3"><b-icon icon="terminal-fill" font-scale="1.2" class="mr-1"></b-icon>{{ projectName }}</b-navbar-brand>
+        <b-navbar-brand to="/" class="ml-1 mr-0 mr-lg-3"><b-icon icon="terminal-fill" font-scale="1.2" class="mr-1"></b-icon>{{ projectName }}</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -19,27 +19,17 @@
 
           <b-navbar-nav class="ml-auto">
             <!-- Cart dropdown -->
-            <b-nav-item-dropdown>
-              <template v-slot:button-content>
-                <b-icon icon="heart-fill" font-scale="1.1"></b-icon>
-                <span class="mr-1">
-                  Cart
-                </span>
-              </template>
-              <b-dropdown-item href="#">Cart item</b-dropdown-item>
-            </b-nav-item-dropdown>
+            <b-nav-item class="d-flex w-100" to="/cart">
+              <b-icon icon="heart-fill" font-scale="1.1"></b-icon>
+              <span class="ml-1">Cart</span>
+              <!-- <span class="header__cartCount">{{ cartItems }}</span> -->
+              <b-badge variant="danger" class="ml-1" v-show="cartItems > 0">{{ cartItems }}</b-badge>
+            </b-nav-item>
             <!-- Profile dropdown -->
-            <b-nav-item-dropdown>
-              <!-- Using 'button-content' slot -->
-              <template v-slot:button-content>
-                <span class="mr-1">
-                  <b-icon icon="person-fill"></b-icon>
-                  Profile
-                </span>
-              </template>
-              <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>
+            <b-nav-item class="d-flex w-100" href="#">
+              <b-icon icon="person-fill" font-scale="1.1"></b-icon>
+              <span class="ml-1">Profile</span>
+            </b-nav-item>
           </b-navbar-nav>
 
         </b-collapse>
@@ -54,6 +44,11 @@ export default {
   data() {
     return {
       projectName: "FULLSTACK PROJECT"
+    }
+  },
+  computed: {
+    cartItems() {
+      return this.$store.state.cart.length
     }
   }
 }
@@ -72,5 +67,7 @@ export default {
       form
         input
           width: 225px
-
+    .nav-link
+      display: flex
+      align-items: center
 </style>

@@ -15,13 +15,13 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
             <div class="modal__price-wrapper mt-4">
-              <b-form @submit.prevent="">
+              <b-form @submit.prevent="addToCart">
                 <b-row cols="12">
-                  <b-col cols="6" class="d-flex justify-content-center">
+                  <b-col cols="6" class="d-flex justify-content-center align-items-center">
                     <span>Total price: ${{ totalModalPrice }}</span>
                   </b-col>
                   <b-col cols="6">
-                    <input type="number" class="modal__count-input w-100" min="1" max="10" v-model="totalModalCount">
+                    <b-form-spinbutton id="sb-wrap" wrap min="1" max="25" v-model="totalModalCount"></b-form-spinbutton>
                   </b-col>
                 </b-row>
                 <b-row cols="12">
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+
 export default {
   name: 'modal',
   props: ['product'],
@@ -50,10 +52,17 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['addItemToCartAction']),
     getImageSrc() {
       if (this.product !== undefined) {
         return "https://picsum.photos/400/?image=" + this.product.photoId
       }
+    },
+    addToCart() {
+      this.product.count = this.totalModalCount
+      this.addItemToCartAction(this.product)
+      this.$emit('closemodal')
+      this.totalModalCount = 1
     }
   },
   watch: {

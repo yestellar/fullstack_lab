@@ -20,7 +20,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'product',
+  name: 'productCard',
   props: ['productId'],
   computed: mapGetters(['allProducts']),
   data() {

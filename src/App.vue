@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar/>
-    <router-view/>
+    <router-view class="viewWindow"/>
   </div>
 </template>
 
@@ -23,6 +23,11 @@
 *
   font-family: 'Roboto', Avenir, sans-serif
 
+.viewWindow
+  margin-top: 56px
 
+.breadcrumb-container
+  border-top: 1px solid rgba(0,0,0,.1)
+  background-color: #f8f9fa
 
 </style>
