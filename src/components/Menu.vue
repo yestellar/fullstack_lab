@@ -1,7 +1,7 @@
 <template lang="html">
-  <div class="menu">
+  <div class="menu" style="margin-top: 56px">
     <b-navbar toggleable="lg" type="light" variant="light">
-          <b-container fluid>
+          <b-container>
             <button type="button" class="menu__button p-1" @click="openHideMenu()">menu <b-icon icon="chevron-down"></b-icon></button>
             <b-nav class="m-auto" variant-info type="light">
               <div id="cols_container" class="menu__cols-container">
@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: 'menu',
+  name: 'navbarMenu',
   methods: {
     openHideMenu() {
       document.getElementById('cols_container').classList.toggle('active')
@@ -61,6 +61,8 @@ export default {
         display: block
 
       .nav-link
+        padding-left: 0px
+        font-family: 'Colodea'
         color: #7c7c7d
         letter-spacing: .4px
         &:hover

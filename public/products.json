@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "photoId": 152,
+    "name": "Cosmopolitan",
+    "price": 59
+  },
+  {
+    "id": 2,
+    "photoId": 112,
+    "name": "Mojito",
+    "price": 89
+  },
+  {
+    "id": 3,
+    "photoId": 353,
+    "name": "Californication",
+    "price": 129
+  },
+  {
+    "id": 4,
+    "photoId": 126,
+    "name": "Pina Colada",
+    "price": 199
+  }
+]

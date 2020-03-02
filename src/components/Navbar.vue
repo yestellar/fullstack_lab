@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="navbar">
-    <b-navbar toggleable="lg" type="light" variant="light" class="header">
+    <b-navbar toggleable="lg" type="light" variant="light" class="header" fixed="top">
 
       <b-container>
 
