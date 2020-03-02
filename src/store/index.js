@@ -20,8 +20,15 @@ export default new Vuex.Store({
         if (item.id === product.id) {
           item.count = product.count
         }
-      });
-
+      })
+    },
+    removeProduct(state, productId) {
+      state.cart.forEach((item, i) => {
+        if (item.id === productId) {
+          console.log(item.name)
+          state.cart.splice(i, 1)
+        }
+      })
     }
   },
   actions: {

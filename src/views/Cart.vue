@@ -14,7 +14,7 @@
     </b-navbar>
     <!-- cartCards -->
     <b-container>
-      <CartProductCard v-for="product in getCartProducts" :product="product" @countchange="getTotalPrice"/>
+      <CartProductCard v-for="product in getCartProducts" :product="product" @countchange="getTotalPrice" @removeproduct="removeproduct(product)" :key="product.id"/>
     </b-container>
     <!-- totalPrice -->
     <b-container class="totalInfo mt-2 text-center">
@@ -28,7 +28,7 @@
 
 import CartProductCard from '@/components/CartProductCard.vue'
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'Cart',
@@ -42,6 +42,7 @@ export default {
     CartProductCard
   },
   methods: {
+    ...mapMutations(['removeProduct']),
     getTotalPrice () {
       this.totalPrice = 0
       this.getCartProducts.forEach((item, i) => {
@@ -51,6 +52,10 @@ export default {
     },
     buyAction() {
       alert("Buy action")
+    },
+    removeproduct(product) {
+      this.removeProduct(product.id)
+      this.getTotalPrice()
     }
   },
   mounted() {

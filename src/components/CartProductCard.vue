@@ -18,8 +18,8 @@
           <b-col cols="2" class="price-container">
             <span class="price">${{ totalPrice }}</span>
           </b-col>
-          <b-col cols="2" class="remove-container">
-            <b-icon icon="bucket"></b-icon>
+          <b-col cols="1" class="remove-container">
+            <b-icon icon="x-circle" font-scale="1.5" style="cursor: pointer" @click="removeProduct"></b-icon>
           </b-col>
         </b-row>
       </b-card-body>
@@ -62,6 +62,9 @@ export default {
     changeProductCount(value) {
       this.totalPrice = this.productPrice * value
       this.$emit('countchange')
+    },
+    removeProduct() {
+      this.$emit('removeproduct')
     }
   },
   mounted() {
